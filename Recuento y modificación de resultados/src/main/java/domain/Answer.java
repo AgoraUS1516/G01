@@ -1,10 +1,19 @@
 package domain;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+@Entity
+@Access(AccessType.PROPERTY)
 public class Answer {
 
 	private String question;
 	private String answer_question;
 
+	@NotBlank
 	public String getQuestion() {
 		return question;
 	}
@@ -13,6 +22,7 @@ public class Answer {
 		this.question = question;
 	}
 
+	@NotBlank
 	public String getAnswer_question() {
 		return answer_question;
 	}
