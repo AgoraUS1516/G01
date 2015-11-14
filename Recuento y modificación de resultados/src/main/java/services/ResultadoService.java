@@ -29,7 +29,7 @@ public class ResultadoService {
 	
 	// Simple CRUD methods -------------------------------------------------
 		public Resultado create() {
-			Resultado r = new Resultado("¿Eres Mayor de Edad?", 15,12);
+			Resultado r = new Resultado();
 			return r;	
 		}
 

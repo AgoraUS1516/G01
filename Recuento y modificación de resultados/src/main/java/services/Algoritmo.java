@@ -1,4 +1,4 @@
-package algoritmos;
+package services;
 
 import java.io.IOException;
 import java.security.InvalidKeyException;
@@ -22,8 +22,7 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.xml.bind.DatatypeConverter;
 
-import main.Authority;
-import main.AuthorityImpl;
+
 
 import com.google.gson.Gson;
 
@@ -34,9 +33,9 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import domain.Answer;
 import domain.Resultado;
 import domain.Voto;
-import domain.VotoAntiguo;
+
 import domain.VotoAux;
-import domain.VotoNuevo;
+
 
 @SuppressWarnings("restriction")
 public class Algoritmo {
