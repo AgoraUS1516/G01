@@ -1,4 +1,4 @@
-package controller;
+package controllers;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import java.util.List;
 
 import javax.crypto.BadPaddingException;
 
-import main.AuthorityImpl;
+
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
