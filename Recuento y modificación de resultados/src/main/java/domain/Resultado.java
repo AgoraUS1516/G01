@@ -9,6 +9,11 @@ public class Resultado extends DomainEntity{
 	String pregunta;
 	Integer numeroSi;
 	Integer numeroNo;
+	
+	public Resultado(){
+		super();
+	}
+	
 	public Resultado(String pregunta, Integer numeroSi, Integer numeroNo) {
 		super();
 		this.pregunta = pregunta;
