@@ -1,6 +1,11 @@
 package domain;
 
-public class Resultado {
+import javax.persistence.Entity;
+
+
+
+@Entity
+public class Resultado extends DomainEntity{
 	String pregunta;
 	Integer numeroSi;
 	Integer numeroNo;
