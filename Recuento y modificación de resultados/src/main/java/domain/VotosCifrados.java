@@ -1,7 +1,7 @@
 package domain;
 
 import java.util.List;
-
+//Sustituido por Votacion
 public class VotosCifrados {
 
 	private Integer msg;

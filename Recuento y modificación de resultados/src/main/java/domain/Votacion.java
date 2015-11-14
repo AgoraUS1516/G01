@@ -1,8 +1,13 @@
 package domain;
 
 import java.util.List;
-//Sustituido por Votacion
-public class Votos {
+
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+//Sustituto de Votos y/o VotosCifrados
+@Entity
+public class Votacion extends DomainEntity{
 
 	private Integer msg;
 	private List<Voto> votes;
@@ -14,7 +19,7 @@ public class Votos {
 	public void setMsg(Integer msg) {
 		this.msg = msg;
 	}
-
+	@OneToMany
 	public List<Voto> getVotes() {
 		return votes;
 	}
