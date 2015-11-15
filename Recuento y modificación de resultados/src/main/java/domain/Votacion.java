@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 public class Votacion extends DomainEntity{
 
 	private Integer msg;
-	private List<Voto> votes;
+	private List<Resultado> resultados;
 
 	public Integer getMsg() {
 		return this.msg;
@@ -20,12 +20,14 @@ public class Votacion extends DomainEntity{
 		this.msg = msg;
 	}
 	@OneToMany
-	public List<Voto> getVotes() {
-		return votes;
+	public List<Resultado> getResultados() {
+		return resultados;
 	}
 
-	public void setVotes(List<Voto> votes) {
-		this.votes = votes;
+	public void setResultados(List<Resultado> resultados) {
+		this.resultados = resultados;
 	}
+
+
 
 }
