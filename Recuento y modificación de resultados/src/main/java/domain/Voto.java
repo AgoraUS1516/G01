@@ -2,16 +2,23 @@ package domain;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Voto {
+import org.hibernate.validator.constraints.NotBlank;
+
+@Entity
+@Access(AccessType.PROPERTY)
+public class Voto extends DomainEntity{
 	
 	private String age;
 	private List<Answer> answers;
 	private String autonomous_community;
 	private String genre;
-	private String id;
 	private String id_poll;
 
 	public String getAge() {
@@ -21,7 +28,10 @@ public class Voto {
 	public void setAge(String age) {
 		this.age = age;
 	}
-
+	
+	@NotNull
+	@Valid
+	@OneToMany
 	public List<Answer> getAnswers() {
 		return answers;
 	}
@@ -29,7 +39,8 @@ public class Voto {
 	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
 	}
-
+	
+	@NotBlank
 	public String getAutonomous_community() {
 		return autonomous_community;
 	}
@@ -37,7 +48,8 @@ public class Voto {
 	public void setAutonomous_community(String autonomous_community) {
 		this.autonomous_community = autonomous_community;
 	}
-
+	
+	@NotBlank
 	public String getGenre() {
 		return genre;
 	}
@@ -46,14 +58,7 @@ public class Voto {
 		this.genre = genre;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
+	@NotNull
 	public String getId_poll() {
 		return id_poll;
 	}
@@ -66,7 +71,7 @@ public class Voto {
 	public String toString() {
 		return "Voto [age=" + age + ", answers=" + answers
 				+ ", autonomous_community=" + autonomous_community + ", genre="
-				+ genre + ", id=" + id + ", id_poll=" + id_poll + "]";
+				+ genre + ", id=" + super.getId() + ", id_poll=" + id_poll + "]";
 	}
 
 
