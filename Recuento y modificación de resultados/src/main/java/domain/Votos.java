@@ -1,7 +1,12 @@
 package domain;
 
 import java.util.List;
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
 //Sustituido por Votacion
+
 public class Votos {
 
 	private Integer msg;
