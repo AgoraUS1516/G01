@@ -17,8 +17,8 @@
 
 	<!-- Artifact identification and properties -->
 
-	<groupId>Design-and-Testing</groupId>
-	<artifactId>Sample</artifactId>
+	<groupId>Recuento</groupId>
+	<artifactId>Recuento</artifactId>
 	<version>1.4</version>
 	<packaging>war</packaging>
 	
@@ -28,9 +28,9 @@
 
 	<!-- Indexing information -->
 
-	<name>Sample Project</name>
-	<url>http://www.sample-project.com</url>
-	<description>This is D&amp;T's sample project.</description>
+	<name>Recuento</name>
+	<url>http://www.recuento.com</url>
+	<description>This is recuento y modificaciones.</description>
 	
 	<!-- Build commands -->
 
