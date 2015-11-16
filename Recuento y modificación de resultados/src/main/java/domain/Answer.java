@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Answer {
+public class Answer extends DomainEntity{
 
 	private String question;
 	private String answer_question;
