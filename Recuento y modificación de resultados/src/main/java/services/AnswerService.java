@@ -37,11 +37,11 @@ public class AnswerService {
 	}
 	
 	public Answer findOne(int answerId) {
-		answerRepository.findOne(id);
+		return answerRepository.findOne(answerId);
 	}
 	
 	public Collection<Answer> findAll() {
-		answerRepository.findAll();
+		return answerRepository.findAll();
 	}
 
 }
