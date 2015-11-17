@@ -59,7 +59,7 @@
 	
 	<!-- Other domain beans come here -->	
 	
-	<bean id ="answer" class="domain.Answer">
+	<bean id ="answer1" class="domain.Answer">
 	<property name="question" value="¿Cual es tu intencion voto?" />
 	<property name="answer_question" value="podemos" />
 	
