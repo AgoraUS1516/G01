@@ -5,7 +5,7 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 
 import org.hibernate.validator.constraints.NotBlank;
-// Test Commit
+
 @Entity
 @Access(AccessType.PROPERTY)
 public class Answer extends DomainEntity{
