@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 public class Votos {
 
 	private Integer msg;
-	private List<Voto> votes;
+	
 
 	public Integer getMsg() {
 		return this.msg;
@@ -19,7 +19,9 @@ public class Votos {
 	public void setMsg(Integer msg) {
 		this.msg = msg;
 	}
-
+	// Relationships ----------------------------------------------------------
+	private List<Voto> votes;
+	
 	public List<Voto> getVotes() {
 		return votes;
 	}

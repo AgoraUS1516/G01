@@ -1,5 +1,11 @@
 package domain;
 
+import java.util.List;
+
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -7,7 +13,7 @@ public class VotoAux {
 	
 	String id;
 	String id_poll;
-	String answer;
+	
 	Integer age;
 	String genre;
 	String autonomous_community;
@@ -23,12 +29,7 @@ public class VotoAux {
 	public void setId_poll(String id_poll) {
 		this.id_poll = id_poll;
 	}
-	public String getAnswer() {
-		return answer;
-	}
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
+
 	public Integer getAge() {
 		return age;
 	}
@@ -47,7 +48,19 @@ public class VotoAux {
 	public void setAutonomous_community(String autonomous_community) {
 		this.autonomous_community = autonomous_community;
 	}
+	// Relationships ----------------------------------------------------------
+		private List<Answer> answers;
+		
+		@NotNull
+		@Valid
+		@OneToMany
+		public List<Answer> getAnswers() {
+			return answers;
+		}
 
+		public void setAnswers(List<Answer> answers) {
+			this.answers = answers;
+		}
 	
 	
 }
