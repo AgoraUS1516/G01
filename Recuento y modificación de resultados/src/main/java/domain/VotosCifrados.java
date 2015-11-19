@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 public class VotosCifrados {
 
 	private Integer msg;
-	private List<String> votes;
+	private List<String> encryptedVotes;
 
 	public Integer getMsg() {
 		return this.msg;
@@ -21,11 +21,11 @@ public class VotosCifrados {
 	}
 
 	public List<String> getVotes() {
-		return votes;
+		return encryptedVotes;
 	}
 
 	public void setVotes(List<String> votes) {
-		this.votes = votes;
+		this.encryptedVotes = votes;
 	}
 
 }

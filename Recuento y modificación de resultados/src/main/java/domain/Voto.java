@@ -16,7 +16,7 @@ import org.hibernate.validator.constraints.NotBlank;
 public class Voto extends DomainEntity{
 	
 	private String age;
-	private List<Answer> answers;
+	
 	private String autonomous_community;
 	private String genre;
 	private String id_poll;
@@ -27,17 +27,6 @@ public class Voto extends DomainEntity{
 
 	public void setAge(String age) {
 		this.age = age;
-	}
-	
-	@NotNull
-	@Valid
-	@OneToMany
-	public List<Answer> getAnswers() {
-		return answers;
-	}
-
-	public void setAnswers(List<Answer> answers) {
-		this.answers = answers;
 	}
 	
 	@NotBlank
@@ -73,6 +62,19 @@ public class Voto extends DomainEntity{
 				+ ", autonomous_community=" + autonomous_community + ", genre="
 				+ genre + ", id=" + super.getId() + ", id_poll=" + id_poll + "]";
 	}
+	// Relationships ----------------------------------------------------------
+	private List<Answer> answers;
+	
+	@NotNull
+	@Valid
+	@OneToMany
+	public List<Answer> getAnswers() {
+		return answers;
+	}
 
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
+	}
+	
 
 }

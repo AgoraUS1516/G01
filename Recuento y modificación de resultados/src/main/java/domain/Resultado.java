@@ -13,9 +13,9 @@ import javax.validation.Valid;
 @Entity
 @Access(AccessType.PROPERTY)
 public class Resultado extends DomainEntity{
-	String pregunta;
-	Integer numeroSi;
-	Integer numeroNo;
+	private String pregunta;
+	private Integer numeroSi;
+	private Integer numeroNo;
 	
 	public Resultado(){
 		super();
