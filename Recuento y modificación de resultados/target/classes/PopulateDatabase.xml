@@ -72,4 +72,40 @@
 	
 	</bean>
 	
+		<bean id ="votacion1" class ="domain.Votacion">
+	<property name="msg" value="3"/>
+
+			<property name="resultados" >
+				<list>
+				<ref bean = "resultado1" />
+					<ref bean = "resultado2" />
+				<ref bean = "resultado3" />
+			
+				</list>
+			</property>
+	</bean>
+	
+	<bean id ="resultado1" class ="domain.Resultado">
+	<property name="pregunta" value="¿Eres del pp?"/>
+	<property name="numeroSi" value ="5"/>
+	<property name="numeroNo" value ="3"/>
+	<property name="votacion" ref ="votacion1"/>
+	</bean>
+	
+		<bean id ="resultado2" class ="domain.Resultado">
+	<property name="pregunta" value="¿Eres del psoe?"/>
+	<property name="numeroSi" value ="5"/>
+	<property name="numeroNo" value ="3"/>
+	<property name="votacion" ref ="votacion1"/>
+	</bean>
+	
+		<bean id ="resultado3" class ="domain.Resultado">
+	<property name="pregunta" value="¿Eres del unidad popular?"/>
+	<property name="numeroSi" value ="5"/>
+	<property name="numeroNo" value ="3"/>
+	<property name="votacion" ref ="votacion1"/>
+	</bean>
+	
+
+	
 </beans>
