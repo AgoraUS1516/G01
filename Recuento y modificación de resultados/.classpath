@@ -29,5 +29,9 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Student/My Documents/Downloads/gson-2.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Student/My Documents/Downloads/jackson-core-asl-1.9.13.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Student/My Documents/Downloads/jackson-mapper-asl-1.9.13.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Student/My Documents/Downloads/jackson-annotations-2.7.0-rc1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

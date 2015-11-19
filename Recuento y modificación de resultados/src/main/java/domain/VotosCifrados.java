@@ -7,6 +7,8 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 //Sustituido por Votacion
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class VotosCifrados {
 
 	private Integer msg;

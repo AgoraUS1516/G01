@@ -11,12 +11,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class VotoAux {
 	
-	String id;
-	String id_poll;
+	private String id;
+	private String id_poll;
 	
-	Integer age;
-	String genre;
-	String autonomous_community;
+	private Integer age;
+	private String genre;
+	private String autonomous_community;
+	
+	
+	
+	public VotoAux() {
+		super();
+	}
 	public String getId() {
 		return id;
 	}

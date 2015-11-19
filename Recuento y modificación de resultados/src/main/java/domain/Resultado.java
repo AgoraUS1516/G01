@@ -1,6 +1,6 @@
 package domain;
 
-import java.util.List;
+
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
