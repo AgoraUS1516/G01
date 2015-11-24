@@ -115,7 +115,7 @@ public class VotacionService {
 	}
 	
 	
-	public (String) Recuento(int votacionId){
+	public (String) recuento(int votacionId){
 		//Llamada a la votación de los métodos cifrados
 		//Hacer una votación transformando los votos cifrados en votos normales
 		//Meter los votos a una nueva votación
