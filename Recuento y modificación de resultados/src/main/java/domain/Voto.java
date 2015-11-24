@@ -1,11 +1,15 @@
 package domain;
 
-import java.util.List;
+
+
+import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -20,6 +24,12 @@ public class Voto extends DomainEntity{
 	private String autonomous_community;
 	private String genre;
 	private String id_poll;
+	
+	
+
+	public Voto() {
+		super();
+	}
 
 	public String getAge() {
 		return age;
@@ -58,23 +68,42 @@ public class Voto extends DomainEntity{
 
 	@Override
 	public String toString() {
-		return "Voto [age=" + age + ", answers=" + answers
-				+ ", autonomous_community=" + autonomous_community + ", genre="
-				+ genre + ", id=" + super.getId() + ", id_poll=" + id_poll + "]";
+		return "Voto [Edad =" + getAge() + ", Autonomous_community ="
+				+ getAutonomous_community() + ", Genero =" + getGenre()
+				+ ", Id_poll =" + getId_poll() + "]";
 	}
+
+	
+	
 	// Relationships ----------------------------------------------------------
-	private List<Answer> answers;
+	private Votacion votacion;
+	private Collection<Answer> ans;
+
+
+	@Valid
+	@ManyToOne(optional=true)
+	public Votacion getVotacion() {
+		return votacion;
+	}
+
+	public void setVotacion(Votacion votacion) {
+		this.votacion = votacion;
+	}
 	
 	@NotNull
 	@Valid
-	@OneToMany
-	public List<Answer> getAnswers() {
-		return answers;
+	@OneToMany(mappedBy="voto")
+	public Collection<Answer> getAns() {
+		return ans;
 	}
 
-	public void setAnswers(List<Answer> answers) {
-		this.answers = answers;
+	public void setAns(Collection<Answer> ans) {
+		this.ans = ans;
 	}
+	
+	
+	
+	
 	
 
 }

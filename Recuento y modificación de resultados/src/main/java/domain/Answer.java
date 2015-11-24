@@ -1,8 +1,14 @@
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -36,6 +42,29 @@ public class Answer extends DomainEntity{
 		return "Answer [question=" + question + ", answer_question="
 				+ answer_question + "]";
 	}
+	// Relationships ----------------------------------------------------------
+	private Voto voto;
+	private Collection<Opcion> opciones;
+	
+	@Valid
+	@ManyToOne(optional=true)
+	public Voto getVoto() {
+		return voto;
+	}
+	
+	public void setVoto(Voto voto) {
+		this.voto = voto;
+	}
+	@NotNull
+	@Valid
+	@OneToMany(mappedBy="ans")
+	public Collection<Opcion> getOpciones() {
+		return opciones;
+	}
 
+	public void setOpciones(Collection<Opcion> opciones) {
+		this.opciones = opciones;
+	}
+	
+	
 }
-

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import sun.misc.BASE64Decoder;
 import domain.Answer;
-import domain.Respuesta;
+import domain.Answer;
 import domain.Voto;
 import domain.VotosCifrados;
 
@@ -32,16 +32,16 @@ public class Controller {
 	// "{\"votes\": [{\"id\": \"None\",\"community\": \"Extremadura\",\"answers\": \"¿DeseaaprobarEGC?: SI\",\"age\": \"20\",\"id_poll\": \"2\",\"genre\": \"HOMBRE\"},{\"id\": \"None\",\"community\": \"Extremadura\",\"answers\": \"¿DeseaaprobarEGC?: SI\",\"age\": \"20\",\"id_poll\": \"2\",\"genre\": \"HOMBRE\"},{\"id\": \"None\",\"community\": \"Andalucia\",\"answers\": \"¿DeseaaprobarEGC?: SI\",\"age\": \"20\",\"id_poll\": \"2\",\"genre\": \"HOMBRE\"},{\"id\": \"None\",\"community\": \"Andalucia\",\"answers\": \"¿DeseaaprobarEGC?: NO\",\"age\": \"20\",\"id_poll\": \"2\",\"genre\": \"HOMBRE\"}],\"msg\": 1}";
 
 	@RequestMapping("/modificacion/results")
-	public List<Respuesta> resultados(
+	public List<Answer> resultados(
 			@RequestParam(required = false, defaultValue = "99") String votacionId) {
 
 		return respuestas(votacionId);
 	}
 
-	public List<Respuesta> respuestas(String id) {
+	public List<Answer> respuestas(String id) {
 		boolean first = true;
 		VotosCifrados votos = null;
-		List<Respuesta> result = null;
+		List<Answer> result = null;
 		String jsonObject = getStringJSONFromUrl("http://php-egc.rhcloud.com/get_votes.php?votation_id=" + id);
 		ObjectMapper mapper = new ObjectMapper();
 		AuthorityImpl authorityImpl = new AuthorityImpl();
@@ -61,9 +61,9 @@ public class Controller {
 					Voto voto = mapper.readValue(descifrado,new TypeReference<Voto>() {
 							});
 					if (first) {
-						result = new ArrayList<Respuesta>();
+						result = new ArrayList<Answer>();
 						for (Answer a : voto.getAnswers()) {
-							Respuesta r = new Respuesta(a.getQuestion());
+							Answer r = new Answer(a.getQuestion());
 							result.add(r);
 						}
 						first = false;

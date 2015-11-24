@@ -1,6 +1,6 @@
 package services;
 
-import java.util.ArrayList;
+
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import repositories.VotoRepository;
-import domain.Answer;
+
 import domain.Voto;
 
 @Service
@@ -30,7 +30,7 @@ public class VotoService {
 	// Simple CRUD methods -------------------------------------------------
 		public Voto create() {
 			Voto r = new Voto();
-			r.setAnswers(new ArrayList<Answer>());
+			
 			return r;	
 		}
 
