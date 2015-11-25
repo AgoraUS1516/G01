@@ -40,7 +40,7 @@ public class Resultado extends DomainEntity{
 	private Collection<Opcion> opciones;	
 	
 	@Valid
-	@ManyToOne(optional=true)
+	@ManyToOne(optional=false)
 	public Votacion getVotacion() {
 		return votacion;
 	}
