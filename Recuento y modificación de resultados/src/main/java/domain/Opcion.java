@@ -46,7 +46,8 @@ public class Opcion extends DomainEntity{
 
 
 	@Valid
-	@ManyToOne(optional=true)
+	@NotNull
+	@ManyToOne(optional=false)
 	public Resultado getResult() {
 		return result;
 	}
@@ -56,7 +57,8 @@ public class Opcion extends DomainEntity{
 	}
 	
 	@Valid
-	@ManyToOne(optional=true)
+	@NotNull
+	@ManyToOne(optional=false)
 	public Answer getAns() {
 		return ans;
 	}
