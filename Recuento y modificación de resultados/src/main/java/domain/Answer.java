@@ -47,7 +47,8 @@ public class Answer extends DomainEntity{
 	private Collection<Opcion> opciones;
 	
 	@Valid
-	@ManyToOne(optional=true)
+	@NotNull
+	@ManyToOne(optional=false)
 	public Voto getVoto() {
 		return voto;
 	}
