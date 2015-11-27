@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * PopulateDatabase.xml
+ *
+ * Copyright (C) 2014 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+	
+	<!-- User accounts -->
+
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount2" class="security.UserAccount">
+		<property name="username" value="customer" />
+		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="super" />
+		<property name="password" value="1b3231655cebb7a1f783eddf27d254ca" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Other domain beans come here -->	
+	
+	<bean id ="answer1" class="domain.Answer">
+	<property name="question" value="¿Cual es tu intencion voto?" />
+	<property name="answer_question" value="podemos" />
+	
+	
+	</bean>
+		<bean id ="respuesta1" class="domain.Respuesta">
+	<property name="pregunta" value="¿Eres de podemos?" />
+	<property name="numerosSi" value="5" />
+	<property name="numerosNo" value="3" />
+	
+	</bean>
+	
+		<bean id ="votacion1" class ="domain.Votacion">
+	<property name="msg" value="3"/>
+
+			<property name="resultados" >
+				<list>
+				<ref bean = "resultado1" />
+					<ref bean = "resultado2" />
+				<ref bean = "resultado3" />
+			
+				</list>
+			</property>
+	</bean>
+	
+	<bean id ="resultado1" class ="domain.Resultado">
+	<property name="pregunta" value="¿Eres del pp?"/>
+	<property name="numeroSi" value ="5"/>
+	<property name="numeroNo" value ="3"/>
+	<property name="votacion" ref ="votacion1"/>
+	</bean>
+	
+		<bean id ="resultado2" class ="domain.Resultado">
+	<property name="pregunta" value="¿Eres del psoe?"/>
+	<property name="numeroSi" value ="5"/>
+	<property name="numeroNo" value ="3"/>
+	<property name="votacion" ref ="votacion1"/>
+	</bean>
+	
+		<bean id ="resultado3" class ="domain.Resultado">
+	<property name="pregunta" value="¿Eres del unidad popular?"/>
+	<property name="numeroSi" value ="5"/>
+	<property name="numeroNo" value ="3"/>
+	<property name="votacion" ref ="votacion1"/>
+	</bean>
+	
+
+	
+</beans>
