@@ -13,21 +13,22 @@ package services;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import repositories.VotacionRepository;
+
+import com.google.gson.Gson;
 
 import domain.Answer;
 import domain.Opcion;
 import domain.Resultado;
 import domain.Votacion;
 import domain.Voto;
-import repositories.VotacionRepository;
 
 @Service
 @Transactional
@@ -36,7 +37,7 @@ public class VotacionService {
 	// Managed repository -----------------------------------------------------
 
 	@Autowired
-	VotacionRepository votacionRepository;
+	private VotacionRepository votacionRepository;
 	
 	
 	// CRUD methods -----------------------------------------------------------
@@ -115,14 +116,16 @@ public class VotacionService {
 	}
 	
 	
-	public (String) recuento(int votacionId){
-		//Llamada a la votación de los métodos cifrados
-		//Hacer una votación transformando los votos cifrados en votos normales
-		//Meter los votos a una nueva votación
-		recuentaVotos(votacion);
-		//Convertir a json la votación
-		//devolver JSON
+	public String recuento(int votacionId) {
+		String result;
+		Votacion votacion = findOne(votacionId);
+		Collection<Resultado> resultado = recuentaVotos(votacion);
 		
+		// Convertir a JSON
+		Gson gson = new Gson();
+		result = gson.toJson(resultado);
+		
+		return result;
 	}
 	
 	
