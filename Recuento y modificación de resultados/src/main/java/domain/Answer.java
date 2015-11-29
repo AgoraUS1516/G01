@@ -58,7 +58,7 @@ public class Answer extends DomainEntity{
 	}
 	@NotNull
 	@Valid
-	@OneToMany(mappedBy="ans")
+	@OneToMany(mappedBy="answer")
 	public Collection<Opcion> getOpciones() {
 		return opciones;
 	}

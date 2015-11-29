@@ -5,8 +5,10 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -41,30 +43,30 @@ public class Opcion extends DomainEntity{
 	}
 	
 	// Relationships ----------------------------------------------------------
-	private Resultado result;
-	private Answer ans;
+	private Resultado resultado;
+	private Answer answer;
 
 
 	@Valid
 	@NotNull
 	@ManyToOne(optional=false)
-	public Resultado getResult() {
-		return result;
+	public Resultado getResultado() {
+		return resultado;
 	}
 
-	public void setResult(Resultado result) {
-		this.result = result;
+	public void setResultado(Resultado result) {
+		this.resultado = result;
 	}
 	
 	@Valid
 	@NotNull
 	@ManyToOne(optional=false)
-	public Answer getAns() {
-		return ans;
+	public Answer getAnswer() {
+		return answer;
 	}
 
-	public void setAns(Answer ans) {
-		this.ans = ans;
+	public void setAnswer(Answer ans) {
+		this.answer = ans;
 	}
 	
 	

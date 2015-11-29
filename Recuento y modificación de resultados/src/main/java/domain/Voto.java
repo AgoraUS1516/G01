@@ -77,7 +77,7 @@ public class Voto extends DomainEntity{
 	
 	// Relationships ----------------------------------------------------------
 	private Votacion votacion;
-	private Collection<Answer> ans;
+	private Collection<Answer> answers;
 
 
 	@Valid
@@ -93,12 +93,12 @@ public class Voto extends DomainEntity{
 	@NotNull
 	@Valid
 	@OneToMany(mappedBy="voto")
-	public Collection<Answer> getAns() {
-		return ans;
+	public Collection<Answer> getAnswers() {
+		return answers;
 	}
 
-	public void setAns(Collection<Answer> ans) {
-		this.ans = ans;
+	public void setAnswers(Collection<Answer> ans) {
+		this.answers = ans;
 	}
 	
 	
