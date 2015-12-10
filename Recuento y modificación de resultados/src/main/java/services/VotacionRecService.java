@@ -66,7 +66,8 @@ public class VotacionRecService {
 		}
 
 		// Other methods -------------------------------------------------
-/*		public Collection<Resultado> recuentaVotos(Votacion votacion){
+/*	En el nuevo método le debe entrar una id
+ * 	public Collection<Resultado> recuentaVotos(Votacion votacion){
 			Collection<Voto> votos=votacion.getVotos();
 			Collection<Resultado> res=new ArrayList<Resultado>();
 			Map<String,List<Opcion>> rec=new HashMap<String,List<Opcion>>();
