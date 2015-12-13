@@ -1,5 +1,6 @@
 package domain;
 
+
 import java.util.Collection;
 
 import javax.persistence.Access;
@@ -11,21 +12,27 @@ import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Range;
+
+// INPUT
 @Entity
 @Access(AccessType.PROPERTY)
 public class Voto extends DomainEntity {
 
-	private int cP;
+	private Integer cp;
 
-	public int getcP() {
-		return cP;
+	@NotNull
+	@Range(min = 0, max = 52999)
+	public Integer getCp() {
+		return cp;
 	}
 
-	public void setcP(int cP) {
-		this.cP = cP;
+	public void setCp(Integer cp) {
+		this.cp = cp;
 	}
 
 	// Relationships ----------------------------------------
+	
 
 	private Collection<Respuesta> respuestas;
 	private Votacion votacion;

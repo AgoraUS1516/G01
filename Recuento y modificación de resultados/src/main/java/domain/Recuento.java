@@ -1,24 +1,24 @@
 package domain;
 
-import java.util.Collection;
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+// OUTPUT
 @Entity
 @Access(AccessType.PROPERTY)
-public class PreguntaRec extends DomainEntity {
-
+public abstract class Recuento extends DomainEntity{
+	
 	private String pregunta;
-
+	private String opcion;
+	private Integer opcionCount;
+	
+	
 	@NotBlank
 	public String getPregunta() {
 		return pregunta;
@@ -27,24 +27,31 @@ public class PreguntaRec extends DomainEntity {
 	public void setPregunta(String pregunta) {
 		this.pregunta = pregunta;
 	}
+	
+	@NotBlank
+	public String getOpcion() {
+		return opcion;
+	}
 
-	// Relationships ----------------------------------------
+	public void setOpcion(String opcion) {
+		this.opcion = opcion;
+	}
+	
+	@Min(0)
+	@NotNull
+	public Integer getOpcionCount() {
+		return opcionCount;
+	}
 
-	private Collection<OpcionRec> opcionRecs;
+	public void setOpcionCount(Integer opcionCount) {
+		this.opcionCount = opcionCount;
+	}
+	
+	
+	// Relationships
+	
 	private VotacionRec votacionRec;
 
-	@NotNull
-	@Valid
-	@OneToMany(mappedBy = "preguntaRec", cascade = CascadeType.ALL)
-	public Collection<OpcionRec> getOpcionRecs() {
-		return opcionRecs;
-	}
-
-	public void setOpcionRecs(Collection<OpcionRec> opcionRecs) {
-		this.opcionRecs = opcionRecs;
-	}
-
-	@Valid
 	@ManyToOne(optional = false)
 	public VotacionRec getVotacionRec() {
 		return votacionRec;
@@ -53,5 +60,8 @@ public class PreguntaRec extends DomainEntity {
 	public void setVotacionRec(VotacionRec votacionRec) {
 		this.votacionRec = votacionRec;
 	}
-
+	
+	
+	
+	
 }

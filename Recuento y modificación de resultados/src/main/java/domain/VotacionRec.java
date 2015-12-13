@@ -5,15 +5,14 @@ import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+//OUTPUT
 @Entity
 @Access(AccessType.PROPERTY)
 public class VotacionRec extends DomainEntity {
@@ -41,18 +40,19 @@ public class VotacionRec extends DomainEntity {
 	}
 
 	// Relationships ----------------------------------------
-
-	private Collection<PreguntaRec> preguntaRecs;
-
-	@NotNull
-	@Valid
-	@OneToMany(mappedBy = "votacionRec", cascade = CascadeType.ALL)
-	public Collection<PreguntaRec> getPreguntaRecs() {
-		return preguntaRecs;
+	
+	private Collection<Recuento> recuento;
+	
+	@OneToMany(mappedBy = "votacionRec", orphanRemoval = true)
+	public Collection<Recuento> getRecuento() {
+		return recuento;
 	}
 
-	public void setPreguntaRecs(Collection<PreguntaRec> preguntaRecs) {
-		this.preguntaRecs = preguntaRecs;
+	public void setRecuento(Collection<Recuento> recuento) {
+		this.recuento = recuento;
 	}
+	
+	
+
 
 }

@@ -63,14 +63,7 @@
 	
 	<!-- Votación -->
 	<bean id ="votacion1" class ="domain.Votacion">
-	<property name="msg" value="36"/>
-	<property name="identificator" value="123456789"/>
-	<property name="resultados" >
-		<list>
-			<ref bean = "resultado1" />
-			<ref bean = "resultado2" />
-		</list>
-	</property>
+	<property name="nombre" value="Encuesta 1"/>
 		<property name="votos" >
 		<list>
 			<ref bean = "voto1" />
@@ -83,188 +76,133 @@
 	<!-- FIN de Votación -->
 	<!-- Voto -->
 	<bean id ="voto1" class ="domain.Voto">
-	<property name="age" value="19"/>
-	<property name="autonomous_community" value="Extremadura" />
-	<property name="genre" value="MUJER" />
-	<property name="id_poll" value="112369" />
-	<property name="answers">
+	<property name ="cp" value="41012" />
+	<property name="respuestas">
 				<list>
-				<ref bean = "answer1" />
-				<ref bean = "answer2" />
-				<ref bean = "answer3" />
+				<ref bean = "respuesta1" />
+				<ref bean = "respuesta2" />
+				<ref bean = "respuesta3" />
 				</list>
 	</property>
 	<property name="votacion" ref="votacion1"/>
 	</bean>
 	
 	<bean id ="voto2" class ="domain.Voto">
-	<property name="age" value="28"/>
-	<property name="autonomous_community" value="Valencia" />
-	<property name="genre" value="HOMBRE" />
-	<property name="id_poll" value="112370" />
-	<property name="answers">
+	<property name ="cp" value="41013" />
+	<property name="respuestas">
 				<list>
-				<ref bean = "answer1" />
-				<ref bean = "answer2" />
-				<ref bean = "answer4" />
+				<ref bean = "respuesta4" />
+				<ref bean = "respuesta5" />
+				<ref bean = "respuesta6" />
 				</list>
 	</property>
 	<property name="votacion" ref="votacion1"/>
 	</bean>
 	
 	<bean id ="voto3" class ="domain.Voto">
-	<property name="age" value="51"/>
-	<property name="autonomous_community" value="Madrid" />
-	<property name="genre" value="HOMBRE" />
-	<property name="id_poll" value="112371" />
-	<property name="answers">
+	<property name ="cp" value="41013" />
+	<property name="respuestas">
 				<list>
-				<ref bean = "answer5" />
+				<ref bean = "respuesta7" />
+				<ref bean = "respuesta8" />
+				<ref bean = "respuesta9" />
 				</list>
 	</property>
 	<property name="votacion" ref="votacion1"/>
 	</bean>
 	
 	<bean id ="voto4" class ="domain.Voto">
-	<property name="age" value="24"/>
-	<property name="autonomous_community" value="Castilla y León" />
-	<property name="genre" value="MUJER" />
-	<property name="id_poll" value="112372" />
-	<property name="answers">
+	<property name ="cp" value="41011" />
+		<property name="respuestas">
 				<list>
-				<ref bean = "answer3" />
-				<ref bean = "answer2" />
+				<ref bean = "respuesta10" />
+				<ref bean = "respuesta11" />
+				<ref bean = "respuesta12" />
 				</list>
 	</property>
 	<property name="votacion" ref="votacion1"/>
 	</bean>
 	<!-- FIN de Voto -->
-	<!-- Answers -->
-	<bean id ="answer1" class="domain.Answer">
-	<property name="question" value="¿Cual es tu intencion voto?" />
-	<property name="answer_question" value="podemos" />
+	<!-- Respuestas -->
+	
+	<!-- PRIMER VOTO -->
+	<bean id ="respuesta1" class="domain.Respuesta">
+	<property name="pregunta" value="¿Cual es tu intencion voto?" />
+	<property name="opcion" value="podemos" />
 	<property name="voto" ref="voto1" />
-	<property name="opciones">
-		<list>
-			<ref bean="opcion1" />
-		</list>
-	</property>
 	</bean>
 	
-	<bean id ="answer2" class="domain.Answer">
-	<property name="question" value="¿Podrías evaluar del 1 al 10 a los actuales políticos?" />
-	<property name="answer_question" value="1" />
+	<bean id ="respuesta2" class="domain.Respuesta">
+	<property name="pregunta" value="¿Podrías evaluar del 1 al 10 a los actuales políticos?" />
+	<property name="opcion" value="1" />
+	<property name="voto" ref="voto1" />
+	</bean>
+	
+	<bean id ="respuesta3" class="domain.Respuesta">
+	<property name="pregunta" value="¿Cual es el candidato que menos te gusta?" />
+	<property name="opcion" value="Albert Rivera" />
+	<property name="voto" ref="voto1" />
+	</bean>
+	
+	<!-- SEGUNDO VOTO -->
+	<bean id ="respuesta4" class="domain.Respuesta">
+	<property name="pregunta" value="¿Cual es tu intencion voto?" />
+	<property name="opcion" value="Podemos" />
 	<property name="voto" ref="voto2" />
-	<property name="opciones">
-		<list>
-			<ref bean="opcion2" />
-		</list>
-	</property>
 	</bean>
 	
-	<bean id ="answer3" class="domain.Answer">
-	<property name="question" value="¿Cual es el candidato que menos te gusta?" />
-	<property name="answer_question" value="Albert Rivera" />
+	<bean id ="respuesta5" class="domain.Respuesta">
+	<property name="pregunta" value="¿Podrías evaluar del 1 al 10 a los actuales políticos?" />
+	<property name="opcion" value="1" />
+	<property name="voto" ref="voto2" />
+	</bean>
+	
+	<bean id ="respuesta6" class="domain.Respuesta">
+	<property name="pregunta" value="¿Cual es el candidato que menos te gusta?" />
+	<property name="opcion" value="Mariano Rajoy" />
+	<property name="voto" ref="voto2" />
+	</bean>
+	
+	<!-- TERCER VOTO -->
+	
+		<bean id ="respuesta7" class="domain.Respuesta">
+	<property name="pregunta" value="¿Cual es tu intencion voto?" />
+	<property name="opcion" value="Ciudadanos" />
+	<property name="voto" ref="voto2" />
+	</bean>
+	
+	<bean id ="respuesta8" class="domain.Respuesta">
+	<property name="pregunta" value="¿Podrías evaluar del 1 al 10 a los actuales políticos?" />
+	<property name="opcion" value="7" />
 	<property name="voto" ref="voto3" />
-	<property name="opciones">
-		<list>
-			<ref bean="opcion3" />
-		</list>
-	</property>
 	</bean>
 	
-	<bean id ="answer4" class="domain.Answer">
-	<property name="question" value="¿Qué partido ha hecho más daño a la democracia según tu opinión?" />
-	<property name="answer_question" value="Alianza popular y posteriormente el PP" />
+	<bean id ="respuesta9" class="domain.Respuesta">
+	<property name="pregunta" value="¿Cual es el candidato que menos te gusta?" />
+	<property name="opcion" value="Pedro Sánchez" />
+	<property name="voto" ref="voto3" />
+	</bean>
+	
+	<!-- CUARTO VOTO -->
+		<bean id ="respuesta10" class="domain.Respuesta">
+	<property name="pregunta" value="¿Cual es tu intencion voto?" />
+	<property name="opcion" value="PSOE" />
 	<property name="voto" ref="voto4" />
-	<property name="opciones">
-		<list>
-			<ref bean="opcion4" />
-		</list>
-	</property>
 	</bean>
 	
-	<bean id ="answer5" class="domain.Answer">
-	<property name="question" value="¿Estaría a favor de permitir a la región catalana celebrar un referendum para decidir su futuro como nación?" />
-	<property name="answer_question" value="Klaro ke noh, los katalane no se merecen nah, cómo hodio a los ktalanes." />
+	<bean id ="respuesta11" class="domain.Respuesta">
+	<property name="pregunta" value="¿Podrías evaluar del 1 al 10 a los actuales políticos?" />
+	<property name="opcion" value="1" />
 	<property name="voto" ref="voto4" />
-	<property name="opciones">
-		<list>
-			<ref bean="opcion5" />
-			<ref bean="opcion6" />
-		</list>
-	</property>
-	</bean>
-	<!-- FIN de Answers -->
-		<!-- Resultado -->
-	<bean id ="resultado1" class ="domain.Resultado">
-	<property name="pregunta" value="¿Cual es el candidato que menos te gusta?"/>
-	<property name="opciones">
-		<list>
-			<ref bean="opcion1" />
-			<ref bean="opcion2" />
-			<ref bean="opcion3" />
-		</list>
-	</property>
-	<property name="votacion" ref="votacion1" />
 	</bean>
 	
-		<bean id ="resultado2" class ="domain.Resultado">
-	<property name="pregunta" value="¿Estaría a favor de permitir a la región catalana celebrar un referendum para decidir su futuro como nación?"/>
-	<property name="opciones">
-		<list>
-			<ref bean="opcion4" />
-			<ref bean="opcion5" />
-			<ref bean="opcion6" />
-		</list>
-	</property>
-	<property name="votacion" ref="votacion1" />
+	<bean id ="respuesta12" class="domain.Respuesta">
+	<property name="pregunta" value="¿Cual es el candidato que menos te gusta?" />
+	<property name="opcion" value="Mariano Rajoy" />
+	<property name="voto" ref="voto4" />
 	</bean>
-	<!-- Fin de Resultado -->
-	<!-- Opcion -->
-		<bean id ="opcion1" class="domain.Opcion">
-	<property name="votos" value="8" />
-	<property name="opcion" value="Klaro ke noh, los katalane no se merecen nah, cómo hodio a los ktalanes." />
-	<property name="resultado" ref="resultado1" />
-	<property name="answer" ref="answer1" />
-	</bean>
+	<!-- FIN de Respuestas -->
 	
-		<bean id ="opcion2" class="domain.Opcion">
-	<property name="votos" value="7" />
-	<property name="opcion" value="Opcion 2" />
-	<property name="resultado" ref="resultado1" />
-	<property name="answer" ref="answer1" />
-	</bean>
-	
-		<bean id ="opcion3" class="domain.Opcion">
-	<property name="votos" value="12" />
-	<property name="opcion" value="Opcion 3" />
-	<property name="resultado" ref="resultado1" />
-	<property name="answer" ref="answer2" />
-	</bean>
-	
-		<bean id ="opcion4" class="domain.Opcion">
-	<property name="votos" value="2" />
-	<property name="opcion" value="Opcion 4" />
-	<property name="resultado" ref="resultado2" />
-	<property name="answer" ref="answer3" />
-	</bean>
-	
-	<bean id ="opcion5" class="domain.Opcion">
-	<property name="votos" value="9" />
-	<property name="opcion" value="Opcion 5" />
-	<property name="resultado" ref="resultado2" />
-	<property name="answer" ref="answer4" />
-	</bean>
-	
-	<bean id ="opcion6" class="domain.Opcion">
-	<property name="votos" value="18" />
-	<property name="opcion" value="Opcion 6" />
-	<property name="resultado" ref="resultado2" />
-	<property name="answer" ref="answer5" />
-	</bean>
-	
-	<!-- FIN de Opcion -->
 
 	
 </beans>
