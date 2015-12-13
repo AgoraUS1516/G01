@@ -8,5 +8,7 @@ import domain.VotacionRec;
 
 @Repository
 public interface VotacionRecRepository extends JpaRepository<VotacionRec, Integer> {
+	
+	
 
 }
