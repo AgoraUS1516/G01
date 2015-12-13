@@ -27,18 +27,18 @@ public class Voto extends DomainEntity {
 
 	// Relationships ----------------------------------------
 
-	private Collection<Opcion> opciones;
+	private Collection<Respuesta> respuestas;
 	private Votacion votacion;
 
 	@NotNull
 	@Valid
 	@OneToMany(mappedBy = "voto", cascade = CascadeType.ALL)
-	public Collection<Opcion> getOpciones() {
-		return opciones;
+	public Collection<Respuesta> getRespuestas() {
+		return respuestas;
 	}
 
-	public void setOpciones(Collection<Opcion> opciones) {
-		this.opciones = opciones;
+	public void setRespuestas(Collection<Respuesta> respuestas) {
+		this.respuestas = respuestas;
 	}
 	
 	@Valid
