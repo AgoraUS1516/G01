@@ -50,17 +50,17 @@ public abstract class Recuento extends DomainEntity{
 	
 	// Relationships
 	
-	private VotacionRec votacionRec;
-
-	@ManyToOne(optional = false)
-	public VotacionRec getVotacionRec() {
-		return votacionRec;
-	}
-
-	public void setVotacionRec(VotacionRec votacionRec) {
-		this.votacionRec = votacionRec;
-	}
-	
+//	private VotacionRec votacionRec;
+//
+//	@ManyToOne(optional = false)
+//	public VotacionRec getVotacionRec() {
+//		return votacionRec;
+//	}
+//
+//	public void setVotacionRec(VotacionRec votacionRec) {
+//		this.votacionRec = votacionRec;
+//	}
+//	
 	
 	
 	

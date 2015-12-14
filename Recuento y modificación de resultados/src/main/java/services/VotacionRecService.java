@@ -66,7 +66,7 @@ public class VotacionRecService {
 
 		public void save(VotacionRec votacionRec) {
 			Assert.notNull(votacionRec);
-			votacionRecRepository.save(votacionRec);
+			votacionRecRepository.saveAndFlush(votacionRec);
 			
 		}
 
@@ -86,29 +86,41 @@ public class VotacionRecService {
 			
 			List<Recuento> recuentos= new ArrayList<Recuento>();
 			
-			Collection<String> preguntasVot=respuestaService.getPreguntasDeUnaVotacion(votacion.getId());
-			Collection<Integer> cPs=respuestaService.getCPsDeUnaVotacion(votacion.getId());
+			Collection<String> preguntasVot=respuestaService.getPreguntasDeUnaVotacion(votacionId);
+			Collection<Integer> cPs=respuestaService.getCPsDeUnaVotacion(votacionId);
 
 			
 			for(String pregunta:preguntasVot){
 				
 				for(Integer cP:cPs){
-					Collection<Object[]> opcionesRecCP=votacionService.recuentaParaUnaDeterminaPreguntaYCP(votacion.getId(), pregunta, cP);
+					Collection<Object[]> opcionesRecCP=votacionService.recuentaParaUnaDeterminaPreguntaYCP(votacionId, pregunta, cP);
 					for(Object[] o:opcionesRecCP){
 					 	RecuentoCP recuentoCP=recuentoCPService.create();
 						recuentoCP.setCp(cP);
 						recuentoCP.setPregunta(pregunta);
-						recuentoCP.setOpcionCount(Integer.getInteger(o[0].toString()));	
+						Integer cuenta=Integer.valueOf(o[0].toString());
+						if(cuenta==null){
+							recuentoCP.setOpcionCount(0);
+						}else{
+							recuentoCP.setOpcionCount(cuenta);
+						}
 						recuentoCP.setOpcion(o[1].toString());
 						recuentos.add(recuentoCP);
+						
 					}
 					
 				}
-				Collection<Object[]> opcionesRec=votacionService.recuentaParaUnaDeterminaPregunta(votacion.getId(), pregunta);
+				Collection<Object[]> opcionesRec=votacionService.recuentaParaUnaDeterminaPregunta(votacionId, pregunta);
 				for(Object[] o:opcionesRec){
 				 	RecuentoGeneral recuentoGeneral=recuentoGeneralService.create();
 				 	recuentoGeneral.setPregunta(pregunta);
-				 	recuentoGeneral.setOpcionCount(Integer.getInteger(o[0].toString()));	
+				 	String cuentaV=o[0].toString();
+					Integer cuenta=Integer.valueOf(cuentaV);
+					if(cuenta==null){
+						recuentoGeneral.setOpcionCount(0);
+					}else{
+						recuentoGeneral.setOpcionCount(cuenta);
+					}	
 				 	recuentoGeneral.setOpcion(o[1].toString());
 					recuentos.add(recuentoGeneral);
 				}

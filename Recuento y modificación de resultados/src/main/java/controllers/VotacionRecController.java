@@ -48,7 +48,7 @@ public class VotacionRecController extends AbstractController {
 //	}
 	
 	@RequestMapping(value = "/vId")
-	public ModelAndView buscaRecuento(@RequestParam int vRec) {
+	public ModelAndView buscaRecuento(@RequestParam Integer vRec) {
 		ModelAndView result;
 		String votacionJSON;
 		

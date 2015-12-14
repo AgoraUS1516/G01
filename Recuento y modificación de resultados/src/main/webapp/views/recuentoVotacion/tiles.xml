@@ -18,10 +18,14 @@
 
 	<definition name="rec/vot/dId" extends="master.page">	
 		<put-attribute name="title" value="Vote recount" />
-		<put-attribute name="body" value="/views/welcome/index.jsp" />
+		<put-attribute name="body" value="/views/recuentoVotacion/details.jsp" />
 	</definition>
-		<definition name="rec/vot" extends="master.page">	
+	<definition name="rec/vot" extends="master.page">	
 		<put-attribute name="title" value="Vote recount" />
-		<put-attribute name="body" value="/views/welcome/index.jsp" />
+		<put-attribute name="body" value="/views/recuentoVotacion/details.jsp" />
+	</definition>
+	<definition name="rec/vot/vId" extends="master.page">	
+		<put-attribute name="title" value="Vote recount" />
+		<put-attribute name="body" value="/views/recuentoVotacion/details.jsp" />
 	</definition>
 </tiles-definitions>

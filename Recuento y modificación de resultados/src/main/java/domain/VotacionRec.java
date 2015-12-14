@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -43,7 +44,7 @@ public class VotacionRec extends DomainEntity {
 	
 	private Collection<Recuento> recuento;
 	
-	@OneToMany(mappedBy = "votacionRec", orphanRemoval = true)
+	@OneToMany(cascade=CascadeType.ALL)
 	public Collection<Recuento> getRecuento() {
 		return recuento;
 	}
