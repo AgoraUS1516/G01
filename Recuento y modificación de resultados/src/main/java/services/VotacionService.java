@@ -25,9 +25,6 @@ import repositories.VotacionRepository;
 
 import com.google.gson.Gson;
 
-import domain.Answer;
-import domain.Opcion;
-import domain.Resultado;
 import domain.Votacion;
 import domain.Voto;
 
@@ -63,72 +60,15 @@ public class VotacionService {
 	public void delete(Votacion votacion){
 		votacionRepository.delete(votacion);
 	}
-	
-	// Business methods -------------------------------------------------------
-	public Collection<Resultado> recuentaVotos(Votacion votacion){
-		Collection<Voto> votos=votacion.getVotos();
-		Collection<Resultado> res=new ArrayList<Resultado>();
-		Map<String,List<Opcion>> rec=new HashMap<String,List<Opcion>>();
-		for(Voto v:votos){
-			for(Answer a:v.getAns()){
-				if(rec.containsKey(a.getQuestion())){
-					List<Opcion> opciones=rec.get(a.getQuestion());
-					if(opciones==null){
-						Opcion o=new Opcion();
-						o.setOpcion(a.getAnswer_question());
-						o.setVotos(1);
-						o.setAns(a);
-						List<Opcion>lopciones= new ArrayList<Opcion>();
-						lopciones.add(o);
-						rec.put(a.getQuestion(), opciones);
-					}else{
-						boolean contains=false;
-						for(Opcion o:opciones){
-							if(o.getOpcion().equals(a.getAnswer_question())){
-								contains=true;
-								Opcion nO=new Opcion();
-								nO.setOpcion(o.getOpcion());
-								nO.setVotos(o.getVotos()+1);
-								nO.setAns(a);
-								opciones.remove(o);
-								opciones.add(nO);					
-							}
-						}if(!contains){
-							Opcion o=new Opcion();
-							o.setOpcion(a.getAnswer_question());
-							o.setVotos(1);
-							o.setAns(a);
-							List<Opcion>lopciones= new ArrayList<Opcion>();
-							lopciones.add(o);
-							rec.put(a.getQuestion(), opciones);
-						}
-						
-					}
-				}
-			}
-		}
-		for(String s:rec.keySet()){
-			Resultado r=new Resultado();
-			r.setPregunta(s);
-			r.setOpciones(rec.get(s));
-			res.add(r);
-		}
-		return res;
-	}
-	
-	
-	public String recuento(int votacionId) {
-		String result;
-		Votacion votacion = findOne(votacionId);
-		Collection<Resultado> resultado = recuentaVotos(votacion);
-		
-		// Convertir a JSON
-		Gson gson = new Gson();
-		result = gson.toJson(resultado);
-		
+	// Other methods -------------------------------------------------
+	public Collection<Object[]> recuentaParaUnaDeterminaPregunta(int votacionId, String pregunta){
+		Collection<Object[]> result=votacionRepository.recuentaParaUnaDeterminaPregunta(votacionId, pregunta);
 		return result;
+		
 	}
-	
-	
-
+	public Collection<Object[]> recuentaParaUnaDeterminaPreguntaYCP(int votacionId, String pregunta,int cp){
+		Collection<Object[]> result=votacionRepository.recuentaParaUnaDeterminaPreguntaYCP(votacionId, pregunta,cp);
+		return result;
+		
+	}
 }

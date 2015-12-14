@@ -19,11 +19,11 @@ public interface RespuestaRepository extends JpaRepository<Respuesta, Integer>{
 		
 			// Respuestas de una pregunta determinada
 		@Query("select distinct r.opcion from Respuesta r where r.voto.votacion = ?1 and r.pregunta = ?2")
-		Collection<String> preguntasDeUnaVotacion(int votacionId, String pregunta);
+		Collection<String> opcionesDeUnaVotacion(int votacionId, String pregunta);
 		
 				// Distintos CP que hay en una votación
 		@Query("select distinct r.voto.cp from Respuesta r where r.voto.votacion = ?1")
-		Collection<Integer> cpsDeUnaVotacion(int votacionId, String pregunta);
+		Collection<Integer> cpsDeUnaVotacion(int votacionId);
 	
 	
 }

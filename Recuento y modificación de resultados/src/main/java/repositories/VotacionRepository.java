@@ -50,11 +50,11 @@ public interface VotacionRepository extends JpaRepository<Votacion, Integer> {
 	
 		// 4. Recuento de una deteminada pregunta (Siempre en el marco de una votacion)
 	@Query("select count(r.opcion), r.opcion from Respuesta r where r.voto.votacion = ?1 and r.pregunta = ?2 group by r.opcion")
-	Object[][] recuentaParaUnaDeterminaPregunta(int votacionId, String pregunta);
+	Collection<Object[]> recuentaParaUnaDeterminaPregunta(int votacionId, String pregunta);
 	
 		// 5. Recuento de una deteminada pregunta POR CP(Siempre en el marco de una votacion)
 	@Query("select count(r.opcion), r.opcion from Respuesta r where r.voto.votacion = ?1 and r.pregunta = ?2 and r.voto.cp = ?3 group by r.opcion")
-	Object[][] recuentaParaUnaDeterminaPreguntaYCP(int votacionId, String pregunta, int cp);
+	Collection<Object[]> recuentaParaUnaDeterminaPreguntaYCP(int votacionId, String pregunta, int cp);
 		
 	
 }

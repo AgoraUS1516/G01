@@ -3,9 +3,8 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +13,11 @@ import org.springframework.util.Assert;
 
 import com.google.gson.Gson;
 
-import domain.Opcion;
+import domain.Recuento;
+import domain.RecuentoCP;
+import domain.RecuentoGeneral;
 import domain.Votacion;
 import domain.VotacionRec;
-import domain.Voto;
 
 import repositories.VotacionRecRepository;
 
@@ -29,9 +29,17 @@ public class VotacionRecService {
 
 		@Autowired
 		private VotacionRecRepository votacionRecRepository;
-		
-	// Supporting Service -------------------------------------------------
 
+	// Supporting Service -------------------------------------------------
+		@Autowired
+		private VotacionService votacionService;
+		@Autowired
+		private RecuentoCPService recuentoCPService ;
+		@Autowired
+		private RecuentoGeneralService recuentoGeneralService ;
+		@Autowired
+		private RespuestaService respuestaService ;
+		
 	// Constructor -------------------------------------------------
 	public VotacionRecService() {
 		super();
@@ -40,6 +48,7 @@ public class VotacionRecService {
 	// Simple CRUD methods -------------------------------------------------
 		public VotacionRec create() {
 			VotacionRec r = new VotacionRec();
+			r.setUltimaModififacion(new Date());
 			return r;	
 		}
 
@@ -67,67 +76,56 @@ public class VotacionRecService {
 		}
 
 		// Other methods -------------------------------------------------
-/*	En el nuevo método le debe entrar una id
- * 	public Collection<Resultado> recuentaVotos(Votacion votacion){
-			Collection<Voto> votos=votacion.getVotos();
-			Collection<Resultado> res=new ArrayList<Resultado>();
-			Map<String,List<Opcion>> rec=new HashMap<String,List<Opcion>>();
-			for(Voto v:votos){
-				for(Answer a:v.getAns()){
-					if(rec.containsKey(a.getQuestion())){
-						List<Opcion> opciones=rec.get(a.getQuestion());
-						if(opciones==null){
-							Opcion o=new Opcion();
-							o.setOpcion(a.getAnswer_question());
-							o.setVotos(1);
-							o.setAns(a);
-							List<Opcion>lopciones= new ArrayList<Opcion>();
-							lopciones.add(o);
-							rec.put(a.getQuestion(), opciones);
-						}else{
-							boolean contains=false;
-							for(Opcion o:opciones){
-								if(o.getOpcion().equals(a.getAnswer_question())){
-									contains=true;
-									Opcion nO=new Opcion();
-									nO.setOpcion(o.getOpcion());
-									nO.setVotos(o.getVotos()+1);
-									nO.setAns(a);
-									opciones.remove(o);
-									opciones.add(nO);					
-								}
-							}if(!contains){
-								Opcion o=new Opcion();
-								o.setOpcion(a.getAnswer_question());
-								o.setVotos(1);
-								o.setAns(a);
-								List<Opcion>lopciones= new ArrayList<Opcion>();
-								lopciones.add(o);
-								rec.put(a.getQuestion(), opciones);
-							}
-							
-						}
+//	En el nuevo método le debe entrar una id
+ 	public VotacionRec recuentaVotos(int votacionId){
+			Votacion votacion=votacionService.findOne(votacionId);
+			VotacionRec result;
+			
+			result=create();
+			result.setNombre(votacion.getNombre());
+			
+			List<Recuento> recuentos= new ArrayList<Recuento>();
+			
+			Collection<String> preguntasVot=respuestaService.getPreguntasDeUnaVotacion(votacion.getId());
+			Collection<Integer> cPs=respuestaService.getCPsDeUnaVotacion(votacion.getId());
+
+			
+			for(String pregunta:preguntasVot){
+				
+				for(Integer cP:cPs){
+					Collection<Object[]> opcionesRecCP=votacionService.recuentaParaUnaDeterminaPreguntaYCP(votacion.getId(), pregunta, cP);
+					for(Object[] o:opcionesRecCP){
+					 	RecuentoCP recuentoCP=recuentoCPService.create();
+						recuentoCP.setCp(cP);
+						recuentoCP.setPregunta(pregunta);
+						recuentoCP.setOpcionCount(Integer.getInteger(o[0].toString()));	
+						recuentoCP.setOpcion(o[1].toString());
+						recuentos.add(recuentoCP);
 					}
+					
+				}
+				Collection<Object[]> opcionesRec=votacionService.recuentaParaUnaDeterminaPregunta(votacion.getId(), pregunta);
+				for(Object[] o:opcionesRec){
+				 	RecuentoGeneral recuentoGeneral=recuentoGeneralService.create();
+				 	recuentoGeneral.setPregunta(pregunta);
+				 	recuentoGeneral.setOpcionCount(Integer.getInteger(o[0].toString()));	
+				 	recuentoGeneral.setOpcion(o[1].toString());
+					recuentos.add(recuentoGeneral);
 				}
 			}
-			for(String s:rec.keySet()){
-				Resultado r=new Resultado();
-				r.setPregunta(s);
-				r.setOpciones(rec.get(s));
-				res.add(r);
-			}
-			return res;
+			result.setRecuento(recuentos);
+			result.setUltimaModififacion(new Date());
+			return result;
 		}
-		
-*/		
+
+			
 		public String recuento(int votacionId) {
 			String result;
-			VotacionRec votacion = findOne(votacionId);
-			//Collection<Resultado> resultado = recuentaVotos(votacion);
+			VotacionRec resultado = recuentaVotos(votacionId);
 			
 			// Convertir a JSON
 			Gson gson = new Gson();
-			result = gson.toJson(votacion);
+			result = gson.toJson(resultado);
 			
 			return result;
 		}

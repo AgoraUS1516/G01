@@ -7,53 +7,54 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import domain.Opcion;
+import domain.RecuentoCP;
+import domain.RecuentoCP;
 
 
-import repositories.OpcionRepository;
+import repositories.RecuentoCPRepository;
 
 @Service
 @Transactional
-public class OpcionService {
+public class RecuentoCPService {
 	
 	// Managed repository -------------------------------------------------
 
 	@Autowired
-	private OpcionRepository opcionRepository;
+	private RecuentoCPRepository recuentoCPRepository;
 	
 // Supporting Service -------------------------------------------------
 
 // Constructor -------------------------------------------------
-	public OpcionService(){
+	public RecuentoCPService(){
 		super();
 	}
 	// Simple CRUD methods -------------------------------------------------
-	public Opcion create() {
-		Opcion o = new Opcion();
+	public RecuentoCP create() {
+		RecuentoCP o = new RecuentoCP();
 		return o;	
 	}
 
-	public Opcion findOne(int opcionServiceId) {
-		Opcion result = opcionRepository.findOne(opcionServiceId);
+	public RecuentoCP findOne(int recuentoCPId) {
+		RecuentoCP result = recuentoCPRepository.findOne(recuentoCPId);
 		Assert.notNull(result);
 		return result;
 	}
 
-	public Collection<Opcion> findAll() {
-		Collection<Opcion>result = opcionRepository.findAll();
+	public Collection<RecuentoCP> findAll() {
+		Collection<RecuentoCP>result = recuentoCPRepository.findAll();
 		Assert.notNull(result);
 		return result;
 	}
 
-	public void save(Opcion opcionService) {
-		Assert.notNull(opcionService);
-		opcionRepository.save(opcionService);
+	public void save(RecuentoCP recuentoCP) {
+		Assert.notNull(recuentoCP);
+		recuentoCPRepository.save(recuentoCP);
 		
 	}
 
-	public void delete(Opcion opcionService) {
-		Assert.notNull(opcionService);
-		opcionRepository.delete(opcionService);
+	public void delete(RecuentoCP recuentoCP) {
+		Assert.notNull(recuentoCP);
+		recuentoCPRepository.delete(recuentoCP);
 	}
 
 	// Other methods -------------------------------------------------
