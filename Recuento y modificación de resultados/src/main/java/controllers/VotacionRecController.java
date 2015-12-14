@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.Votacion;
+import domain.VotacionRec;
 
 
 import services.VotacionRecService;
@@ -35,16 +36,16 @@ public class VotacionRecController extends AbstractController {
 	}
 		
 	// Index ------------------------------------------------------------------		
-	@RequestMapping(value = "/dId")
-	public ModelAndView recuentaVotacion(@RequestParam(required=false, defaultValue="1") int vot) {
-		ModelAndView result;
-		
-		// votacionRecService.recuentaVotos(vot);
-		//Votacion votacion=votacionService.findOne(vot);
-		//VotacionRec votacionRec=votacionService.findByName(vot.name);
-		result = new ModelAndView("redirect:rec/vot/vId"+vot);
-		return result;
-	}
+//	@RequestMapping(value = "/dId")
+//	public ModelAndView recuentaVotacion(@RequestParam(required=false, defaultValue="4") int vot) {
+//		ModelAndView result;
+//		
+//		VotacionRec votacionRec=votacionRecService.recuentaVotos(vot);
+//		
+//		VotacionRec votacionRecAux=votacionRecService.findByName(votacionRec.getNombre());
+//		result = new ModelAndView("redirect:rec/vot/vId"+votacionRecAux.getId());
+//		return result;
+//	}
 	
 	@RequestMapping(value = "/vId")
 	public ModelAndView buscaRecuento(@RequestParam int vRec) {

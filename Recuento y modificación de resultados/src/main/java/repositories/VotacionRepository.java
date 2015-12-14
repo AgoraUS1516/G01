@@ -23,7 +23,7 @@ import domain.Votacion;
 @Repository
 public interface VotacionRepository extends JpaRepository<Votacion, Integer> {
 	
-	@Query("select v from Votacion where v.nombre = ?1")
+	@Query("select v from Votacion v where v.nombre = ?1")
 	Collection<Votacion> findByNombre(String nombre);
 	
 	

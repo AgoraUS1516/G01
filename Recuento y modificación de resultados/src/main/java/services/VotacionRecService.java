@@ -115,6 +115,7 @@ public class VotacionRecService {
 			}
 			result.setRecuento(recuentos);
 			result.setUltimaModififacion(new Date());
+			save(result);
 			return result;
 		}
 
@@ -122,11 +123,15 @@ public class VotacionRecService {
 		public String recuento(int votacionId) {
 			String result;
 			VotacionRec resultado = recuentaVotos(votacionId);
-			
 			// Convertir a JSON
 			Gson gson = new Gson();
 			result = gson.toJson(resultado);
 			
 			return result;
 		}
+
+//		public VotacionRec findByName(String nombre) {
+//			VotacionRec result=votacionRecRepository.findByName(nombre);
+//			return result;
+//		}
 }
