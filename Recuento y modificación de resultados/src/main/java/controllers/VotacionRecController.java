@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.Votacion;
@@ -48,13 +49,14 @@ public class VotacionRecController extends AbstractController {
 //	}
 	
 	@RequestMapping(value = "/vId")
-	public ModelAndView buscaRecuento(@RequestParam Integer vRec) {
-		ModelAndView result;
+	@ResponseBody
+	public String buscaRecuento(@RequestParam Integer vRec) {
+//		ModelAndView result;
 		String votacionJSON;
 		
 		votacionJSON=votacionRecService.recuento(vRec);		
-		result = new ModelAndView("rec/vot");
-		result.addObject("votacionJSON", votacionJSON);
-		return result;
+//		result = new ModelAndView("rec/vot");
+//		result.addObject("votacionJSON", votacionJSON);
+		return votacionJSON;
 	}
 }
