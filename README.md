@@ -1,5 +1,4 @@
-# G01
-Recuento y modificación de resultados
+# G01 Recuento y modificación de resultados.
 Nos encontramos dos carpetas:
 >Recuento y modificación de resultados
 >recuento-master
