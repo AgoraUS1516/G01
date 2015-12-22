@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 import domain.Recuento;
 import domain.RecuentoCP;
@@ -132,12 +133,12 @@ public class VotacionRecService {
 		}
 
 			
-		public String recuento(int votacionId) {
-			String result;
+		public JsonElement recuento(int votacionId) {
+			JsonElement result;
 			VotacionRec resultado = recuentaVotos(votacionId);
 			// Convertir a JSON
 			Gson gson = new Gson();
-			result = gson.toJson(resultado);
+			result=gson.toJsonTree(resultado);
 			
 			return result;
 		}
