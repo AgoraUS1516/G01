@@ -7,3 +7,5 @@ Nos encontramos dos carpetas:
 
 La primera es del proyecto 2015-2016, la segunda corresponde a la del año 2014-2015.
 Hay 3 archivos de imágenes, son los UML del proyecto en diferentes versiones.
+------------------
+Editado: Ahora solo mantenemos el proyecto actual.
